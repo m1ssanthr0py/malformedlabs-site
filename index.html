@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Malformed Research</title>
+  <meta name="description" content="Malformed Research is a research firm based out of Mesilla, NM. We specialize in cyber threat intelligence, adversary hunting and sophisticated threat actors.">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #100d1b;
+      --surface: #1b1528;
+      --surface-raised: #241a32;
+      --border: #403047;
+      --text: #f5dfbd;
+      --muted: #c0adbd;
+      --accent: #ff785a;
+      --pink: #ff56a8;
+      --cyan: #70e5df;
+      --wrap: 1120px;
+    }
+    * { box-sizing: border-box; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 82% 6%, rgb(255 86 168 / 14%), transparent 34rem),
+        radial-gradient(ellipse at 8% 94%, rgb(112 229 223 / 11%), transparent 30rem),
+        linear-gradient(180deg, #100d1b 0%, #151020 48%, #100d1b 100%);
+      color: var(--text);
+      font: 16px/1.65 "Avenir Next", Avenir, "Segoe UI", sans-serif;
+    }
+    a { color: var(--cyan); }
+    a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 28px; }
+    header {
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid rgb(245 223 189 / 12%);
+      background: rgb(16 13 27 / 78%);
+      backdrop-filter: blur(14px);
+    }
+    nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px 28px; padding: 20px 0; }
+    .logo {
+      color: var(--text);
+      font-family: "Arial Narrow", "Avenir Next Condensed", sans-serif;
+      font-size: 1.12rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .logo span { color: var(--pink); text-shadow: 0 0 16px rgb(255 86 168 / 55%); }
+    nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 26px; margin: 0; padding: 0; }
+    nav ul a {
+      color: var(--muted);
+      font-size: .83rem;
+      font-weight: 650;
+      letter-spacing: .04em;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color .2s ease;
+    }
+    nav ul a:hover { color: var(--cyan); }
+    .hero { padding-top: 78px; padding-bottom: 96px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr); gap: 48px; align-items: center; }
+    .hero-copy { position: relative; z-index: 1; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--cyan);
+      font-size: .76rem;
+      font-weight: 750;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 24px; height: 1px; background: var(--cyan); content: ""; }
+    h1 {
+      max-width: 12ch;
+      margin: 18px 0 22px;
+      font-family: "Arial Narrow", "Avenir Next Condensed", sans-serif;
+      font-size: clamp(3.1rem, 6.8vw, 5.7rem);
+      font-weight: 800;
+      letter-spacing: -.045em;
+      line-height: .98;
+      text-shadow: 0 0 36px rgb(255 86 168 / 30%), 0 0 70px rgb(112 229 223 / 14%);
+      text-transform: uppercase;
+    }
+    .lede { max-width: 54ch; color: var(--muted); font-size: 1.08rem; }
+    .hero-art {
+      position: relative;
+      min-height: 370px;
+      overflow: hidden;
+      isolation: isolate;
+      border: 1px solid rgb(255 120 90 / 30%);
+      border-radius: 48% 48% 12px 12px;
+      background:
+        linear-gradient(0deg, rgb(16 13 27 / 75%) 0%, transparent 32%),
+        radial-gradient(ellipse at center, transparent 55%, rgb(16 13 27 / 45%) 100%),
+        url("images/neo-las-cruces.jpg") center 32% / cover no-repeat;
+      box-shadow: 0 28px 90px rgb(255 86 168 / 13%), inset 0 0 80px rgb(16 13 27 / 25%);
+    }
+    .hero-stamp {
+      position: absolute;
+      right: 22px;
+      bottom: 20px;
+      color: rgb(245 223 189 / 82%);
+      font-size: .65rem;
+      font-weight: 750;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 28px;
+      padding: 13px 19px;
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      background: var(--accent);
+      color: #1d1020;
+      font-size: .86rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-decoration: none;
+      text-transform: uppercase;
+      box-shadow: 0 0 24px rgb(255 120 90 / 35%);
+      transition: background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .button::after { color: #1d1020; content: "↗"; font-size: 1rem; }
+    .button:hover { background: transparent; color: var(--text); box-shadow: 0 0 30px rgb(255 86 168 / 45%); transform: translateY(-2px); }
+    .button:hover::after { color: var(--text); }
+    section { padding: 76px 0; border-top: 1px solid rgb(245 223 189 / 12%); }
+    h2 {
+      margin: 0 0 10px;
+      font-family: "Arial Narrow", "Avenir Next Condensed", sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -.025em;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+    .section-intro { max-width: 62ch; margin: 0 0 34px; color: var(--muted); }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); list-style: none; margin: 0; padding: 0; }
+    .card {
+      position: relative;
+      min-height: 150px;
+      padding: 25px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: linear-gradient(145deg, rgb(36 26 50 / 94%), rgb(24 19 35 / 94%));
+      transition: border-color .2s ease, transform .2s ease, background .2s ease;
+    }
+    .card::before { position: absolute; top: 0; left: 25px; width: 34px; height: 2px; background: linear-gradient(90deg, var(--pink), var(--cyan)); content: ""; }
+    .card:hover { transform: translateY(-4px); border-color: rgb(112 229 223 / 55%); background: var(--surface-raised); }
+    .card h3 { margin: 0 0 9px; color: var(--text); font-size: 1.08rem; letter-spacing: .01em; }
+    .card p { margin: 0; color: var(--muted); }
+    .meta { display: block; margin-top: 16px; color: var(--cyan); font-size: .8rem; letter-spacing: .04em; }
+    .card-team { display: flex; align-items: center; gap: 20px; }
+    .card-photo {
+      flex-shrink: 0;
+      width: 84px;
+      height: 84px;
+      border: 2px solid var(--pink);
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 24px rgb(255 86 168 / 35%);
+    }
+    .contact dl { display: grid; grid-template-columns: 115px minmax(0, 1fr); gap: 12px 24px; max-width: 600px; margin: 0; }
+    .contact dt { color: var(--cyan); font-size: .82rem; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
+    .contact dd { margin: 0; }
+    footer { border-top: 1px solid rgb(245 223 189 / 12%); padding: 26px 0; color: var(--muted); font-size: .82rem; letter-spacing: .04em; }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+    @media (max-width: 760px) {
+      .wrap { padding: 0 20px; }
+      nav { align-items: flex-start; }
+      nav ul { gap: 8px 16px; }
+      .hero { padding-top: 58px; padding-bottom: 70px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-art { min-height: 300px; }
+      section { padding: 58px 0; }
+    }
+    @media (max-width: 460px) {
+      nav { display: block; }
+      nav ul { margin-top: 14px; }
+      nav ul a { font-size: .78rem; }
+      .hero-art { min-height: 245px; }
+      .contact dl { grid-template-columns: 1fr; gap: 4px; }
+      .contact dd { margin-bottom: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header id="top">
+    <div class="wrap">
+      <nav aria-label="Primary">
+        <a class="logo" href="#top">Malformed<span>Labs</span></a>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#focus">Research areas</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Research · Mesilla, New Mexico</div>
+          <h1>Find threats hiding in plain sight</h1>
+          <p class="lede">Malformed Research serves state, local, tribal and federal entities via threat intelligence resources. We also support private clients on a case-by-case basis.</p>
+          <a class="button" href="#contact">Get in touch</a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <span class="hero-stamp">Signals from the frontier</span>
+        </div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <h2>About</h2>
+        <p class="section-intro"> Malformed Research was born from the grounbreaking work of Ashley Sequeira, who discovered the SuperBOX Information Warfare Campaign in 2024. Her work spawned an industry wide change in how consumer IoT devices are viewed from a security perspective.</p>
+      </div>
+    </section>
+
+    <section id="focus">
+      <div class="wrap">
+        <h2>Research areas</h2>
+        <p class="section-intro">Contact Ashley for research artifacts.</p>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="wrap">
+        <h2>Publications &amp; reports</h2>
+        <p class="section-intro">Contact Ashley for research artifacts.</p>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="wrap">
+        <h2>Team</h2>
+        <ul class="grid">
+          <li class="card card-team">
+            <img class="card-photo" src="images/ashley-sequeira.jpg" alt="Ashley Sequeira">
+            <div>
+              <h3>Ashley Sequeira</h3>
+              <p>Research Lead</p>
+              <span class="meta">China</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <p class="section-intro">Reach out for briefings, partnerships, or press inquiries.</p>
+        <dl>
+          <dt>Email</dt><dd><a href="mailto:speaking@malformedlabs.net">speaking@malformedlabs.net</a></dd>
+          <dt>Legal name</dt><dd>Malformed Mouthpiece LLC</dd>
+          <dt>Address</dt><dd>2253 Calle De Parian # 1480<br>Mesilla, NM 88046</dd>
+          <dt>Phone</dt><dd><a href="tel:+15757277319">575-727-7319</a></dd>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>&copy; 2026 MalformedLabs</span>
+      <span>malformedlabs.net</span>
+    </div>
+  </footer>
+</body>
+</html>

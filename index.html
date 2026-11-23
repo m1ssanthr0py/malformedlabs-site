@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Malformed Labs</title>
-  <meta name="description" content="Malformed Labs is the independent research firm of D3ada55, based in Mesilla, NM: cyber threat intelligence, adversary hunting, and consumer IoT and residential-proxy threats.">
+  <meta name="description" content="Malformed Labs is an independent threat research firm in Mesilla, NM: residential proxies, compromised consumer devices, and the outliers that give campaigns away.">
   <style>
     :root {
       color-scheme: dark;
@@ -164,6 +164,8 @@
     .card p { margin: 0; color: var(--muted); }
     .meta { display: block; margin-top: 16px; color: var(--cyan); font-size: .8rem; letter-spacing: .04em; }
     .card-team { display: flex; align-items: center; gap: 20px; }
+    .card-mono { display: grid; place-items: center; background: linear-gradient(135deg, #2a1838, #1b1528); color: var(--pink);
+      font: 800 1.6rem/1 "Arial Narrow", "Avenir Next Condensed", sans-serif; letter-spacing: .04em; }
     .card-photo {
       flex-shrink: 0;
       width: 84px;
@@ -206,7 +208,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#focus">Research areas</a></li>
           <li><a href="#publications">Publications</a></li>
-          <li><a href="#team">Team</a></li>
+          <li><a href="#team">Researcher</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -219,7 +221,7 @@
         <div class="hero-copy">
           <div class="eyebrow">Independent threat research · Mesilla, New Mexico</div>
           <h1>Find threats hiding in plain sight</h1>
-          <p class="lede">Malformed Labs is the independent research firm of D3ada55. We hunt the infrastructure most teams overlook: residential proxies, compromised consumer devices, and the weird outliers that give a campaign away. We turn it into intelligence for state, local, tribal and federal partners. Private engagements by request.</p>
+          <p class="lede">Malformed Labs is an independent threat research firm. We hunt the infrastructure most teams overlook: residential proxies, compromised consumer devices, and the weird outliers that give a campaign away. We turn it into intelligence for state, local, tribal and federal partners. Private engagements by request.</p>
           <div class="hero-actions"><a class="button" href="#contact">Get in touch</a><a class="button button-ghost" href="research/superbox-campaign.html">Read the SuperBOX research</a></div>
         </div>
         <div class="hero-art" aria-hidden="true">
@@ -231,7 +233,7 @@
     <section id="about">
       <div class="wrap">
         <h2>About</h2>
-        <p class="section-intro">Malformed Labs grew out of D3ada55's (Ashley Sequeira's) investigation of SuperBOX streaming boxes, which she began publishing in 2025: cheap Android TV devices that turn home networks into infrastructure for other people's crime. Her findings, from Tencent beaconing and LAN poisoning to unauthenticated root access, were reported by <a href="https://krebsonsecurity.com/2025/11/is-your-android-tv-streaming-box-part-of-a-botnet/">Krebs on Security</a> and told in full on <a href="https://darknetdiaries.com/episode/172/">Darknet Diaries episode 172, "SuperBox"</a>.</p>
+        <p class="section-intro">Malformed Labs grew out of research into SuperBOX streaming boxes, first published in 2025: cheap Android TV devices that turn home networks into infrastructure for other people's crime. The findings, from Tencent beaconing and LAN poisoning to unauthenticated root access, were reported by <a href="https://krebsonsecurity.com/2025/11/is-your-android-tv-streaming-box-part-of-a-botnet/">Krebs on Security</a> and told in full on <a href="https://darknetdiaries.com/episode/172/">Darknet Diaries episode 172, "SuperBox"</a>.</p>
         <p class="section-intro">That work helped change how consumer IoT devices are viewed from a security perspective: not as gadgets, but as part of the threat landscape.</p>
       </div>
     </section>
@@ -254,7 +256,7 @@
         <p class="section-intro">Public research and coverage. Contact us for research artifacts.</p>
         <ul class="grid">
           <li class="card"><h3><a href="research/superbox-campaign.html">SuperBOX Campaign: Impact on Threat Research</a></h3><p>What the TV-box residential proxy campaign is, why it breaks IP reputation and attribution, and what researchers and defenders should do.</p><span class="meta">Malformed Labs · November 2026 · TLP:CLEAR</span></li>
-          <li class="card"><h3><a href="https://darknetdiaries.com/episode/172/">EP 172: SuperBox</a></h3><p>D3ada55 tells Jack Rhysider how a box her father bought turned out to be watching back.</p><span class="meta">Darknet Diaries · April 7, 2026</span></li>
+          <li class="card"><h3><a href="https://darknetdiaries.com/episode/172/">EP 172: SuperBox</a></h3><p>D3ada55 tells Jack Rhysider how a streaming box on a family network turned out to be watching back.</p><span class="meta">Darknet Diaries · April 7, 2026</span></li>
           <li class="card"><h3><a href="https://krebsonsecurity.com/2025/11/is-your-android-tv-streaming-box-part-of-a-botnet/">Is Your Android TV Streaming Box Part of a Botnet?</a></h3><p>The first public report of SuperBox units contacting Tencent QQ and a residential proxy service on first boot.</p><span class="meta">Krebs on Security · November 24, 2025</span></li>
         </ul>
       </div>
@@ -262,14 +264,15 @@
 
     <section id="team">
       <div class="wrap">
-        <h2>Team</h2>
+        <h2>Researcher</h2>
+        <p class="section-intro">Work directly with the researcher behind the SuperBOX findings.</p>
         <ul class="grid">
           <li class="card card-team">
-            <img class="card-photo" src="images/ashley-sequeira.jpg" alt="Ashley Sequeira">
+            <div class="card-photo card-mono" aria-hidden="true">D3</div>
             <div>
-              <h3>Ashley Sequeira <span style="color:var(--muted);font-weight:500">· D3ada55</span></h3>
-              <p>Research Lead</p>
-              <span class="meta">Mesilla, New Mexico</span>
+              <h3>D3ada55</h3>
+              <p>Lead researcher. Available for briefings, conference talks, press interviews and research collaboration.</p>
+              <span class="meta"><a href="mailto:speaking@malformedlabs.net?subject=Briefing%20request%20for%20D3ada55&body=Organisation%3A%5CnTopic%3A%5CnPreferred%20dates/times%20%28with%20time%20zone%29%3A%5Cn">Request a briefing</a> · <a href="https://darknetdiaries.com/episode/172/">Hear the SuperBOX story</a></span>
             </div>
           </li>
         </ul>
@@ -279,8 +282,11 @@
     <section id="contact" class="contact">
       <div class="wrap">
         <h2>Contact</h2>
-        <p class="section-intro">Reach out for briefings, partnerships, or press inquiries.</p>
+        <p class="section-intro">Pick the route that fits; every message reaches the right person.</p>
         <dl>
+          <dt>Briefings</dt><dd><a href="mailto:speaking@malformedlabs.net?subject=Briefing%20/%20engagement%20request&body=Organisation%3A%5CnWhat%20you%20need%20%28briefing%2C%20research%2C%20assessment%29%3A%5CnTimeline%3A%5Cn">Briefings &amp; engagements</a></dd>
+          <dt>Press</dt><dd><a href="mailto:speaking@malformedlabs.net?subject=Press%20/%20speaking%20request&body=Outlet%20or%20event%3A%5CnTopic%3A%5CnDeadline%3A%5Cn">Press &amp; speaking</a></dd>
+          <dt>Meetings</dt><dd><a href="mailto:speaking@malformedlabs.net?subject=Meeting%20request&body=Topic%3A%5CnPreferred%20dates/times%20%28with%20time%20zone%29%3A%5CnAttendees%3A%5Cn">Request a meeting</a></dd>
           <dt>Email</dt><dd><a href="mailto:speaking@malformedlabs.net">speaking@malformedlabs.net</a></dd>
           <dt>Legal name</dt><dd>Malformed Mouthpiece LLC</dd>
           <dt>Address</dt><dd>2253 Calle De Parian # 1480<br>Mesilla, NM 88046</dd>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SuperBOX Campaign: Impact on Threat Research | Malformed Labs</title>
+  <meta name="description" content="How cheap Android streaming boxes became residential-proxy infrastructure, why that breaks IP reputation and attribution, and what researchers and defenders should do. TLP:CLEAR.">
+  <style>
+    :root { color-scheme: dark; --bg: #100d1b; --surface: #1b1528; --border: #403047; --text: #f5dfbd; --muted: #c0adbd;
+      --accent: #ff785a; --pink: #ff56a8; --cyan: #70e5df; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); font: 17px/1.7 "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      background: radial-gradient(ellipse at 82% 6%, rgb(255 86 168 / 12%), transparent 34rem),
+                  linear-gradient(180deg, #100d1b 0%, #151020 48%, #100d1b 100%); }
+    a { color: var(--cyan); }
+    a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+    header { border-bottom: 1px solid rgb(245 223 189 / 12%); background: rgb(16 13 27 / 78%); }
+    .bar { max-width: 1120px; margin: 0 auto; padding: 20px 28px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .logo { color: var(--text); font-family: "Arial Narrow", "Avenir Next Condensed", sans-serif; font-weight: 800; letter-spacing: .12em;
+      text-decoration: none; text-transform: uppercase; }
+    .logo span { color: var(--pink); }
+    .back { color: var(--muted); font-size: .85rem; text-decoration: none; }
+    article { max-width: 760px; margin: 0 auto; padding: 56px 28px 80px; }
+    .tlp { display: inline-block; padding: 3px 9px; border-radius: 4px; background: var(--text); color: #100d1b; font-size: .72rem; font-weight: 800; letter-spacing: .08em; }
+    .meta { color: var(--muted); font-size: .9rem; margin: 10px 0 26px; }
+    h1 { font-family: "Arial Narrow", "Avenir Next Condensed", sans-serif; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.05; letter-spacing: -.02em;
+      text-transform: uppercase; margin: 16px 0 8px; text-shadow: 0 0 30px rgb(255 86 168 / 25%); }
+    h2 { font-family: "Arial Narrow", "Avenir Next Condensed", sans-serif; font-size: 1.7rem; text-transform: uppercase; letter-spacing: -.01em;
+      margin: 44px 0 10px; padding-top: 18px; border-top: 1px solid rgb(245 223 189 / 12%); }
+    p, li { color: var(--text); }
+    .lede { font-size: 1.12rem; color: var(--muted); }
+    strong { color: #fff3dc; }
+    .table { overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); margin: 16px 0; }
+    table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: .9rem; line-height: 1.5; }
+    th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    th { color: var(--cyan); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+    tr:last-child td { border-bottom: 0; }
+    td:first-child { white-space: nowrap; color: var(--muted); }
+    footer { border-top: 1px solid rgb(245 223 189 / 12%); padding: 26px 28px; color: var(--muted); font-size: .82rem; text-align: center; }
+    @media (max-width: 520px) { article { padding: 40px 20px 64px; } body { font-size: 16px; } }
+  </style>
+</head>
+<body>
+  <header><div class="bar"><a class="logo" href="../index.html">Malformed<span>Labs</span></a><a class="back" href="../index.html#publications">← Publications</a></div></header>
+  <article>
+    <span class="tlp">TLP:CLEAR</span>
+    <h1>SuperBOX Campaign: Impact on Threat Research</h1>
+    <p class="meta">Malformed Labs · D3ada55 · November 23, 2026 · Built from public reporting and Malformed Labs' methodology; no restricted indicators are included.</p>
+
+    <h2>Summary</h2>
+    <p class="lede">Cheap Android streaming boxes, sold under names like SuperBox and the look-alike "VSee / MAGA / Cola" boxes Malformed Labs tracks as one campaign, have become infrastructure for other people's crime.</p>
+    <p>Public research through November 2026 shows these boxes are compromised before or during setup and then rented out as <strong>residential proxies</strong>, used for ad fraud, credential attacks and DDoS. The largest disruption so far, Google's takedown of the XCPE botnet in November 2026, covered <strong>more than 1.3 million</strong> boxes.</p>
+    <p>For threat research the impact is bigger than the devices: when criminal traffic leaves from millions of real home connections, IP reputation, blocklists and geolocation stop telling defenders who is on the other end. The campaign forces researchers to look at <strong>what a host runs and how it behaves</strong>, not only where its traffic comes from.</p>
+
+    <h2>Where it started: Darknet Diaries EP 172</h2>
+    <p>The research began at home. In <a href="https://darknetdiaries.com/episode/172/">Darknet Diaries episode 172, "SuperBox"</a> (April 7, 2026), host Jack Rhysider interviews <strong>D3ada55</strong>, the researcher behind Malformed Labs, about the boxes her father bought for his TVs after her sister noticed the home network slowing down. Putting one behind a firewall and capturing its traffic, she describes:</p>
+    <ul>
+      <li>first contact going to Tencent (qq.com) servers, and the box ARP-flooding the LAN until other devices lost their addresses;</li>
+      <li>plain Android with a 2021 security patch level, TeamViewer preinstalled, and ADB open without authentication, giving a root shell;</li>
+      <li>27 boot partitions with only 15 visible, heavy traffic to .top and .cn domains, and no FCC information despite regulatory text on the packaging;</li>
+      <li>a maker that looked like a shell company, units sold through major retailers' third-party sellers, and resellers paid to promote them.</li>
+    </ul>
+    <p>She ties the device to the BADBOX 2.0 family, and the episode cites the FBI's June 2025 warning. These observations are her first-hand account; the rest of this write-up adds the independent public research that followed.</p>
+
+    <h2>What happened</h2>
+    <p>The public record shows one business model behind many brands: ship or load an Android TV box with software that quietly turns the owner's home connection into a proxy exit, then sell access to that exit.</p>
+    <div class="table"><table>
+      <thead><tr><th>Date</th><th>Event</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Nov 2, 2026</td><td>Google's Threat Intelligence Group and partners dismantle the <strong>XCPE</strong> botnet: more than 1.3 million set-top boxes, mostly blamed on maker Videostrong Technology, whose malware loaded on first boot. Google estimates the action cuts off at least 10 million more devices.</td><td><a href="https://krebsonsecurity.com/2026/11/tech-firms-dismantle-botnet-that-turned-1-3m-tv-boxes-into-proxies/">Krebs on Security</a></td></tr>
+        <tr><td>Sep 14, 2026</td><td>Analysis of Plume Security Labs' test: a SuperBox exposed to the proxy network was hit by more than 1,300 attacks in three weeks, enrolled in up to five botnets at once, and received three malware types including a DDoS module.</td><td><a href="https://www.kaspersky.com/blog/smart-tv-box-residential-proxy-malware-threat/56404/">Kaspersky</a></td></tr>
+        <tr><td>Sep 4, 2026</td><td>Plume finds Popanet proxy code in the CyberFlix TV app from SuperBox's own app store, and a configuration that exposes ADB and root without authentication.</td><td><a href="https://www.malwarebytes.com/blog/news/2026/09/free-streaming-boxes-may-be-routing-criminal-traffic-through-your-home">Malwarebytes</a></td></tr>
+        <tr><td>Apr 7, 2026</td><td>Darknet Diaries EP 172 "SuperBox": D3ada55 describes taking a SuperBox apart on her own network.</td><td><a href="https://darknetdiaries.com/episode/172/">Darknet Diaries</a></td></tr>
+        <tr><td>Nov 24, 2025</td><td>D3ada55 (credited by Krebs as a Censys engineer) shows SuperBox units, sold at major US retailers for about $400, contacting Tencent QQ and the Grass residential proxy service on first boot, hijacking the router's DNS, ARP-poisoning the LAN, and carrying a "secondstage" folder plus netcat and tcpdump. Grass's founder denies any tie to the maker; the maker did not respond.</td><td><a href="https://krebsonsecurity.com/2025/11/is-your-android-tv-streaming-box-part-of-a-botnet/">Krebs on Security</a></td></tr>
+        <tr><td>Jun 5, 2025</td><td>FBI warns that BADBOX 2.0 has infected over 1 million home devices (boxes, projectors, frames), preloaded or infected through updates and apps; traffic from 222 countries and territories.</td><td><a href="https://www.bleepingcomputer.com/news/security/fbi-badbox-20-android-malware-infects-millions-of-consumer-devices/">BleepingComputer</a></td></tr>
+      </tbody>
+    </table></div>
+    <p>Three compromise routes recur: malware present at first boot, "required" apps from the box's private app store, and factory firmware that leaves remote root access open. Once enrolled, boxes are resold through proxy and bandwidth-sharing services; several of the companies named deny knowingly buying from the device makers, and one says its supplier faked user-consent signals.</p>
+
+    <h2>Why it matters for threat research</h2>
+    <ul>
+      <li><strong>IP reputation stops being a verdict.</strong> An attack that exits from a family's living-room box looks like a clean residential address. Blocklists built from "bad IPs" either miss it or end up blocking ordinary households.</li>
+      <li><strong>Attribution gets noisier.</strong> The proxy hop launders the real operator; the visible source is a victim. Researchers have to separate the exit (a compromised box) from the operator (whoever rents it), and report both honestly.</li>
+      <li><strong>Geography is misleading.</strong> Exits sit wherever the boxes were sold, so country-based rules and "unusual location" alerts lose meaning.</li>
+      <li><strong>The supply chain is part of the threat.</strong> When the device ships compromised, "patch and reset" is not a fix; a factory reset may not remove it, and the box must be replaced.</li>
+    </ul>
+    <p>Malformed Labs calls this a hybrid-warfare problem because the same rented infrastructure can serve fraud one day and influence or disruption operations the next. That framing is our analytic judgment, not a finding of the sources above.</p>
+
+    <h2>How Malformed Labs worked it</h2>
+    <ol>
+      <li><strong>Restricted indicators stay restricted.</strong> Partner-supplied indicators are used only for the purpose they were cleared for. This write-up contains none of them.</li>
+      <li><strong>Look at the host, not the address.</strong> Each host is examined for what it runs: exposed services, management interfaces, certificates and proxy software, and how that changes over time.</li>
+      <li><strong>History over snapshots.</strong> Timelines of when services appear and disappear matter for infrastructure that rotates through rented home connections.</li>
+      <li><strong>Measure, don't assume.</strong> Our evaluation harness scores the same alerts with and without host-level internet-scan data. On threat feeds independent of any one vendor, host context raised detection from 5.9% to 8.9% of malicious alerts, with 3 false positives in 5,000 benign sites. Reputation alone misses most of this class of infrastructure.</li>
+    </ol>
+
+    <h2>Recommendations</h2>
+    <p><strong>For researchers:</strong> treat residential IPs as victims first and report exit and operator separately; score hosts on behaviour as well as reputation; keep history, because proxy exits rotate; and honour TLP and source licences.</p>
+    <p><strong>For defenders and households:</strong> disconnect SuperBox units and any box running the CyberFlix TV app, and replace them, since a factory reset may not be enough; put streaming and IoT devices on a separate network with client isolation; disable ADB/USB debugging and unknown-source installs where possible; buy certified devices from known brands; and report suspected infections to the FBI's Internet Crime Complaint Center (IC3).</p>
+
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="https://darknetdiaries.com/episode/172/">EP 172: SuperBox</a>, Darknet Diaries, Apr 7, 2026 (<a href="https://darknetdiaries.com/transcript/172">transcript</a>)</li>
+      <li><a href="https://krebsonsecurity.com/2026/11/tech-firms-dismantle-botnet-that-turned-1-3m-tv-boxes-into-proxies/">Tech Firms Dismantle Botnet That Turned 1.3M TV Boxes Into Proxies</a>, Krebs on Security, Nov 2, 2026</li>
+      <li><a href="https://www.kaspersky.com/blog/smart-tv-box-residential-proxy-malware-threat/56404/">Trojan TV, or the new risks of malicious proxies</a>, Kaspersky, Sep 14, 2026</li>
+      <li><a href="https://www.malwarebytes.com/blog/news/2026/09/free-streaming-boxes-may-be-routing-criminal-traffic-through-your-home">Free streaming boxes may be routing criminal traffic through your home</a>, Malwarebytes, Sep 4, 2026</li>
+      <li><a href="https://krebsonsecurity.com/2025/11/is-your-android-tv-streaming-box-part-of-a-botnet/">Is Your Android TV Streaming Box Part of a Botnet?</a>, Krebs on Security, Nov 24, 2025</li>
+      <li><a href="https://www.bleepingcomputer.com/news/security/fbi-badbox-20-android-malware-infects-millions-of-consumer-devices/">FBI: BADBOX 2.0 Android malware infects millions of consumer devices</a>, BleepingComputer, Jun 5, 2025</li>
+    </ul>
+  </article>
+  <footer>&copy; 2026 Malformed Labs · <a href="../index.html">malformedlabs.net</a></footer>
+</body>
+</html>

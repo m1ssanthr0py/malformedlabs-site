@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Malformed Research</title>
-  <meta name="description" content="Malformed Research is a research firm based out of Mesilla, NM. We specialize in cyber threat intelligence, adversary hunting and sophisticated threat actors.">
+  <title>Malformed Labs</title>
+  <meta name="description" content="Malformed Labs is the independent research firm of D3ada55, based in Mesilla, NM: cyber threat intelligence, adversary hunting, and consumer IoT and residential-proxy threats.">
   <style>
     :root {
       color-scheme: dark;
@@ -215,7 +215,7 @@
         <div class="hero-copy">
           <div class="eyebrow">Research · Mesilla, New Mexico</div>
           <h1>Find threats hiding in plain sight</h1>
-          <p class="lede">Malformed Research serves state, local, tribal and federal entities via threat intelligence resources. We also support private clients on a case-by-case basis.</p>
+          <p class="lede">Malformed Labs is the independent research firm of D3ada55. We serve state, local, tribal and federal entities with threat intelligence, and support private clients on a case-by-case basis.</p>
           <a class="button" href="#contact">Get in touch</a>
         </div>
         <div class="hero-art" aria-hidden="true">
@@ -227,21 +227,32 @@
     <section id="about">
       <div class="wrap">
         <h2>About</h2>
-        <p class="section-intro"> Malformed Research was born from the grounbreaking work of Ashley Sequeira, who discovered the SuperBOX Information Warfare Campaign in 2024. Her work spawned an industry wide change in how consumer IoT devices are viewed from a security perspective.</p>
+        <p class="section-intro">Malformed Labs grew out of D3ada55's (Ashley Sequeira's) investigation of SuperBOX streaming boxes, which she began publishing in 2025: cheap Android TV devices that turn home networks into infrastructure for other people's crime. Her findings, from Tencent beaconing and LAN poisoning to unauthenticated root access, were reported by <a href="https://krebsonsecurity.com/2025/11/is-your-android-tv-streaming-box-part-of-a-botnet/">Krebs on Security</a> and told in full on <a href="https://darknetdiaries.com/episode/172/">Darknet Diaries episode 172, "SuperBox"</a>.</p>
+        <p class="section-intro">That work helped change how consumer IoT devices are viewed from a security perspective: not as gadgets, but as part of the threat landscape.</p>
       </div>
     </section>
 
     <section id="focus">
       <div class="wrap">
         <h2>Research areas</h2>
-        <p class="section-intro">Contact Ashley for research artifacts.</p>
+        <p class="section-intro">What we hunt, and how.</p>
+        <ul class="grid">
+          <li class="card"><h3>Residential proxies</h3><p>How compromised home connections, from streaming boxes to other consumer devices, are rented out as proxy exits, and how to tell the exit from the operator behind it.</p></li>
+          <li class="card"><h3>Weird outliers</h3><p>The hosts and devices that don't fit the pattern: odd services, strange certificates, traffic that shouldn't be there. Outliers are where campaigns like SuperBOX first show up.</p></li>
+          <li class="card"><h3>Threats you may not consider</h3><p>The box under the TV, the gadget on the shelf, the supply chain behind them. Everyday devices that quietly become part of someone else's operation.</p></li>
+        </ul>
       </div>
     </section>
 
     <section id="publications">
       <div class="wrap">
         <h2>Publications &amp; reports</h2>
-        <p class="section-intro">Contact Ashley for research artifacts.</p>
+        <p class="section-intro">Public research and coverage. Contact us for research artifacts.</p>
+        <ul class="grid">
+          <li class="card"><h3><a href="research/superbox-campaign.html">SuperBOX Campaign: Impact on Threat Research</a></h3><p>What the TV-box residential proxy campaign is, why it breaks IP reputation and attribution, and what researchers and defenders should do.</p><span class="meta">Malformed Labs · November 2026 · TLP:CLEAR</span></li>
+          <li class="card"><h3><a href="https://darknetdiaries.com/episode/172/">EP 172: SuperBox</a></h3><p>D3ada55 tells Jack Rhysider how a box her father bought turned out to be watching back.</p><span class="meta">Darknet Diaries · April 7, 2026</span></li>
+          <li class="card"><h3><a href="https://krebsonsecurity.com/2025/11/is-your-android-tv-streaming-box-part-of-a-botnet/">Is Your Android TV Streaming Box Part of a Botnet?</a></h3><p>The first public report of SuperBox units contacting Tencent QQ and a residential proxy service on first boot.</p><span class="meta">Krebs on Security · November 24, 2025</span></li>
+        </ul>
       </div>
     </section>
 
@@ -252,9 +263,9 @@
           <li class="card card-team">
             <img class="card-photo" src="images/ashley-sequeira.jpg" alt="Ashley Sequeira">
             <div>
-              <h3>Ashley Sequeira</h3>
+              <h3>Ashley Sequeira <span style="color:var(--muted);font-weight:500">· D3ada55</span></h3>
               <p>Research Lead</p>
-              <span class="meta">China</span>
+              <span class="meta">Mesilla, New Mexico</span>
             </div>
           </li>
         </ul>

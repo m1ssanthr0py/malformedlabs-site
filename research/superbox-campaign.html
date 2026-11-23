@@ -45,7 +45,7 @@
   <article>
     <span class="tlp">TLP:CLEAR</span>
     <h1>SuperBOX Campaign: Impact on Threat Research</h1>
-    <p class="meta">Malformed Labs · D3ada55 · November 23, 2026 · Built from public reporting and Malformed Labs' methodology; no restricted indicators are included.</p>
+    <p class="meta">Malformed Labs · Research by D3ada55, a researcher at Malformed Labs · November 23, 2026 · Built from public reporting and Malformed Labs' methodology; no restricted indicators are included.</p>
 
     <h2>Summary</h2>
     <p class="lede">Cheap Android streaming boxes, sold under names like SuperBox and the look-alike "VSee / MAGA / Cola" boxes Malformed Labs tracks as one campaign, have become infrastructure for other people's crime.</p>
@@ -53,7 +53,7 @@
     <p>For threat research the impact is bigger than the devices: when criminal traffic leaves from millions of real home connections, IP reputation, blocklists and geolocation stop telling defenders who is on the other end. The campaign forces researchers to look at <strong>what a host runs and how it behaves</strong>, not only where its traffic comes from.</p>
 
     <h2>Where it started: Darknet Diaries EP 172</h2>
-    <p>The research began at home. In <a href="https://darknetdiaries.com/episode/172/">Darknet Diaries episode 172, "SuperBox"</a> (April 7, 2026), host Jack Rhysider interviews <strong>D3ada55</strong>, Malformed Labs' lead researcher, about streaming boxes that showed up on a family network and slowed it down. Putting one behind a firewall and capturing its traffic, D3ada55 describes:</p>
+    <p>The research began at home. In <a href="https://darknetdiaries.com/episode/172/">Darknet Diaries episode 172, "SuperBox"</a> (April 7, 2026), host Jack Rhysider interviews <strong>D3ada55</strong>, a researcher at Malformed Labs, about streaming boxes that showed up on a family network and slowed it down. Putting one behind a firewall and capturing its traffic, D3ada55 describes:</p>
     <ul>
       <li>first contact going to Tencent (qq.com) servers, and the box ARP-flooding the LAN until other devices lost their addresses;</li>
       <li>plain Android with a 2021 security patch level, TeamViewer preinstalled, and ADB open without authentication, giving a root shell;</li>
@@ -70,7 +70,7 @@
         <tr><td>Nov 2, 2026</td><td>Google's Threat Intelligence Group and partners dismantle the <strong>XCPE</strong> botnet: more than 1.3 million set-top boxes, mostly blamed on maker Videostrong Technology, whose malware loaded on first boot. Google estimates the action cuts off at least 10 million more devices.</td><td><a href="https://krebsonsecurity.com/2026/11/tech-firms-dismantle-botnet-that-turned-1-3m-tv-boxes-into-proxies/">Krebs on Security</a></td></tr>
         <tr><td>Sep 14, 2026</td><td>Analysis of Plume Security Labs' test: a SuperBox exposed to the proxy network was hit by more than 1,300 attacks in three weeks, enrolled in up to five botnets at once, and received three malware types including a DDoS module.</td><td><a href="https://www.kaspersky.com/blog/smart-tv-box-residential-proxy-malware-threat/56404/">Kaspersky</a></td></tr>
         <tr><td>Sep 4, 2026</td><td>Plume finds Popanet proxy code in the CyberFlix TV app from SuperBox's own app store, and a configuration that exposes ADB and root without authentication.</td><td><a href="https://www.malwarebytes.com/blog/news/2026/09/free-streaming-boxes-may-be-routing-criminal-traffic-through-your-home">Malwarebytes</a></td></tr>
-        <tr><td>Apr 7, 2026</td><td>Darknet Diaries EP 172 "SuperBox": D3ada55 describes taking a SuperBox apart on her own network.</td><td><a href="https://darknetdiaries.com/episode/172/">Darknet Diaries</a></td></tr>
+        <tr><td>Apr 7, 2026</td><td>Darknet Diaries EP 172 "SuperBox": D3ada55 describes taking a SuperBox apart on a home network.</td><td><a href="https://darknetdiaries.com/episode/172/">Darknet Diaries</a></td></tr>
         <tr><td>Nov 24, 2025</td><td>Krebs on Security reports research showing SuperBox units, sold at major US retailers for about $400, contacting Tencent QQ and the Grass residential proxy service on first boot, hijacking the router's DNS, ARP-poisoning the LAN, and carrying a "secondstage" folder plus netcat and tcpdump. Grass's founder denies any tie to the maker; the maker did not respond.</td><td><a href="https://krebsonsecurity.com/2025/11/is-your-android-tv-streaming-box-part-of-a-botnet/">Krebs on Security</a></td></tr>
         <tr><td>Jun 5, 2025</td><td>FBI warns that BADBOX 2.0 has infected over 1 million home devices (boxes, projectors, frames), preloaded or infected through updates and apps; traffic from 222 countries and territories.</td><td><a href="https://www.bleepingcomputer.com/news/security/fbi-badbox-20-android-malware-infects-millions-of-consumer-devices/">BleepingComputer</a></td></tr>
       </tbody>
